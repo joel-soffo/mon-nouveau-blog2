@@ -1,0 +1,207 @@
+{% extends 'main.html' %}
+{% load static %}
+ <head>
+
+   <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+  <link href="css/table-responsive.css" rel="stylesheet">
+
+  </head>
+
+<a href="fund_table.html">
+  {% block content %}
+   <body>
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Viewing fund  Data  </h3>
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> GP Table </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Gp Name</th>
+
+                      <th >First Name Manager</th>
+                      <th >Last Name Manager</th>
+                      <th >Email Manager</th>
+                      <th>Validation</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in gp %}
+                            <tr>
+                            <td>{{ i.name_gp  }}</td>
+
+                            <td >{{ i.prenoms_manager }} </td>
+                            <td >{{ i.name_manager }} </td>
+                            <td >{{ i.mail_manager }} </td>
+
+                          <!--  <td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td>-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+        <!-- /row -->
+         <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> Fund Table </h4>
+              <section id="unseen1">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th>GP </th>
+
+                      <th >Open-close</th>
+                      <th >Structure</th>
+                      <th >Type </th>
+                      <th>Ltv max</th>
+                      <th>Ltv current</th>
+                      <th>Ltv target</th>
+                      <th>Gav current</th>
+                      <th>Gav target</th>
+                      <th>Loan interest</th>
+                      <th>Loan maturity</th>
+                      <th>Loan type</th>
+                      <th>Loan capped</th>
+                      <th>Validation</th>
+
+
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td>{{ i.name_fund  }}</td>
+
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.id_gp }} </td>
+                            <td > {{ i.open_close }}</td>
+                            <td > {{ i.structure }}</td>
+                            <td > {{ i.type }}</td>
+                            <td > {{ i.ltv_max }}</td>
+                            <td > {{ i.ltv_current}}</td>
+                            <td > {{ i.ltv_target}}</td>
+                            <td > {{ i.gav_current}}</td>
+                            <td > {{ i.gav_target}}</td>
+                            <td > {{ i.loan_interest}}</td>
+                            <td > {{ i.loan_maturity}}</td>
+                            <td > {{ i.loan_type}}</td>
+                            <td > {{ i.loan_capped}}</td>
+                            <td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td>
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+
+
+
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> Fund Table2 </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th>GP </th>
+                      <th >NAV current </th>
+                      <th >Net Dividend </th>
+                      <th >Capital growth</th>
+                      <th >Total net return  </th>
+                      <th>TRI</th>
+                      <th>Minimum ticket </th>
+                      <th>Inception </th>
+                      <th>Nav Calculation Method </th>
+                      <th>Strategy Summary</th>
+                      <th>Queue Value </th>
+                      <th>Queue Term</th>
+                      <th>Validation</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td>{{ i.name_fund  }}</td>
+
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.id_gp }} </td>
+                            <td >{{ i.nav_current }} </td>
+                            <td > {{ i.dividende_net }}</td>
+                            <td > {{ i.capital_growth }}</td>
+                            <td > {{ i.total_net_return}}</td>
+                          <!--  <td > {{ i.tri }}</td>-->
+                            <td > {{ i.min_ticket}}</td>
+                            <td > {{ i.inception}}</td>
+                            <td > {{ i.nav_calculation_method}}</td>
+                            <td > {{ i.strategy_summary}}</td>
+                            <td > {{ i.queue_value}}</td>
+                            <td > {{ i.queue_term}}</td>
+                            <td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td>
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+        <!-- /row -->
+      </section>
+      <!-- /wrapper -->
+    </section>
+   </body>
+
+  <script>
+    function valider(a) {
+        document.getElementById(a).style.display = '';
+    }
+  </script>
+
+
+
+  {% endblock %}
+
+
+
+
+
+</a>
