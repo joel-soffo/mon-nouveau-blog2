@@ -1,0 +1,140 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+<a href="profil_fund.html">
+{% block content %}
+     <body >
+     <section id="main-content">
+      <section class="wrapper">
+
+           <div class="row mt">
+           <div class="col-lg-6 col-md-6 col-sm-12">
+           <div class="showback">
+               <div>
+              <h1 style="color: blue"> PROFIL OF FUND </h1>
+              </div>
+                <h4><i class="fa fa-angle-right"></i> FUND </h4>
+                <button type="button" class="btn btn-primary ">Edit Fund Data</button>
+                <button type="button" class="btn btn-theme04">Delete </button>
+
+               <!-- /col-lg-12 -->
+           </div>
+           </div>
+
+
+
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <!--  BUTTONS SIZES -->
+            <div class="showback">
+              <h4 style="color: black;font-size:22px"><i class="fa fa-angle-right"></i> INFORMATIONS</h4>
+                <table>
+              <tr>
+                <h4 style="color: #003399"><i class="fa fa-angle-right"></i> GENERAL FEATURES OF FUND </h4>
+                <p><b>Fund name</b>: <a>{{ fund.name_fund }}</a> </p>
+                <p><b>Year</b>: <a>{{ fund.val_annee }}</a> </p>
+                <p><b>Quarter</b> : <a>{{ fund.id_trim }}</a></p>
+                <p><b>GP</b> : <a>{{ fund.id_gp }}</a></p>
+                <p><b>Legal structure</b> :<a>{{ fund.legal_structure  }}</a></p>
+                <p><b>Country-domicile-fund</b> : <a>{{ fund.pays_domiciliation_fund }}</a></p>
+                <p><b>Open-close</b> : <a>{{ fund.open_close }}</a></p>
+                <p><b>Structure</b> : <a>{{ fund.structure }}</a></p>
+                <p><b>Type</b> : <a>{{ fund.type }}</a></p>
+                <p><b>Gp alignement</b> : <a>{{ fund.gp_alignement }}</a></p>
+                <p><b>Fund term</b> : <a>{{ fund.fund_term}}</a></p>
+                <p><b>Fund description</b> : <a>{{ fund.desc_fund }}</a></p>
+                <p><b>Inception</b> : <a>{{ fund.inception }}</a></p>
+                <p><b>Strategy summary</b> : <a>{{ fund.strategy_summary }}</a></p>
+
+
+               <h4 style="color: #003399"><i class="fa fa-angle-right"></i> PORTFOLIO </h4>
+
+                <p><b>Portfolio value</b> : <a>{{ fund.portfolio_value  }}</a></p>
+                <p><b>WALT</b> : <a>{{ fund.walt}}</a></p>
+                <p><b>WALB</b> : <a>{{ fund.walb }}</a></p>
+                <p><b>Number of asset</b> : <a>{{ fund.asset_number }}</a></p>
+                <p><b>Number of tenant</b> : <a>{{ fund.tenants}}</a></p>
+                <p><b>Financial occupancy rate</b> : <a>{{ fund.taux_occup_financiere }}</a></p>
+                <p><b>Physical occupancy rate</b> : <a>{{ fund.taux_occup_physique }}</a></p>
+                <p><b>Net operating income (NOI)</b> : <a>{{ fund.net_acquisition_income }}</a></p>
+                <p><b>Cash and cash</b> : <a>{{ fund.cash_and_cash }}</a></p>
+                <p><b>ERV</b> : <a>{{ fund.erv }}</a></p>
+
+
+                <h4 style="color: #003399"><i class="fa fa-angle-right"></i> GEARING / DEBT DATA</h4>
+
+                <p><b>Interest rate</b> : <a>{{ fund.loan_interest   }}</a></p>
+                <p><b>Capped rate cost</b> : <a>{{ fund.loan_capped}}</a></p>
+                <p><b>Loan maturity</b> : <a>{{ fund.loan_maturity }}</a></p>
+                <p><b>Loan type</b> : <a>{{ fund.loan_type }}</a></p>
+                <p><b>Interest rate type</b> : <a>{{ fund.interest_rate_type}}</a></p>
+
+              <h4 style="color: #003399"><i class="fa fa-angle-right"></i> NAV/GAV/LEVERAGE</h4>
+                   <p><b>Ltv max </b> : <a>{{ fund.ltv_max }}</a></p>
+                   <p><b>Ltv current</b> : <a>{{ fund.ltv_current }}</a></p>
+                   <p><b>Ltv target</b> : <a>{{ fund.ltv_target}}</a></p>
+                   <p><b>NAV current</b> : <a>{{ fund.nav_current }}</a></p>
+                   <p><b>GAV target</b> : <a>{{ fund.gav_target }}</a></p>
+                   <p><b>GAV current</b> : <a>{{ fund.gav_current }}</a></p>
+                   <p><b>Net Dividend</b> : <a>{{ fund.dividende_net}}</a></p>
+                   <p><b>Capital growth</b> : <a>{{ fund.capital_growth  }}</a></p>
+                   <p><b>Total net return </b> : <a>{{ fund.total_net_return}}</a></p>
+                   <p><b>TRI</b> : <a>{{ fund.tri }}</a></p>
+                   <p><b>Minimum ticket</b> : <a>{{ fund.min_ticket }}</a></p>
+
+               <h4 style="color: #003399"><i class="fa fa-angle-right"></i> FEES </h4>
+                  <p><b>Management fees</b> : <a>{{ fund.management_fees  }}</a></p>
+                  <p><b>Performance fees</b> : <a>{{ fund.performance_fees }}</a></p>
+                  <p><b>Asset acquisition fees</b> : <a>{{ fund.asset_acquisition_fees }}</a></p>
+                  <p><b>Asset exit fees</b> : <a>{{ fund.asset_exit_fees}}</a></p>
+                  <p><b>Other fees</b> : <a>{{ fund.other_fees }}</a></p>
+                  <p><b>Forword exchange hedging</b> : <a>{{ fund.forward_exchange_hedging }}</a></p>
+                  <p><b>TER NAV</b> : <a>{{ fund.ter_nav }}</a></p>
+                  <p><b>TER GAV</b> : <a>{{ fund.ter_gav }}</a></p>
+                  <p><b>TGER NAV</b> : <a>{{ fund.tger_nav  }}</a></p>
+                  <p><b>TGER GAV</b> : <a>{{ fund.tger_gav  }}</a></p>
+
+               <h4 style="color: #003399"><i class="fa fa-angle-right"></i> INVESTORS  </h4>
+                  <p><b>Number of investors </b> : <a>{{ fund.nbre_invetisseurs   }}</a></p>
+                  <p><b>Medium Ticket (€ M)</b> : <a>{{ fund.ticket_moyen}}</a></p>
+                  <p><b>Big Ticket (€ M)</b> : <a>{{ fund.ticket_gros}}</a></p>
+                  <p><b>Small Ticket (€ M)</b> : <a>{{ fund.ticket_petit}}</a></p>
+               <h4 style="color: #003399"><i class="fa fa-angle-right"></i>  LIQUIDITY </h4>
+                  <p><b>Queue Value</b> : <a>{{ fund.queue_value  }}</a></p>
+                  <p><b>Queue term </b> : <a>{{ fund.queue_term }}</a></p>
+                  <p><b>Redemption</b> : <a>{{ fund.redemption }}</a></p>
+               <h4 style="color: #003399"><i class="fa fa-angle-right"></i> ESG </h4>
+                  <p><b>SFDR</b> : <a>{{ fund.sfdr}}</a></p>
+                  <p><b>GRESB</b> : <a>{{ fund.gresb  }}</a></p>
+                  <p><b>Number of buildings labelled </b> : <a>{{ fund.nbre_immeuble_labelise }}</a></p>
+                  <p><b>GName of the person updating</b> : <a>{{ fund.nom_per_modif  }}</a></p>
+
+
+
+              </tr>
+
+            </table>
+
+
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+           </div>
+      </section>
+     </section>
+     </body>
+
+
+
+
+
+
+{% endblock %}
+</a>

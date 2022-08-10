@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fund',
     'home',
-    'personnel'
+    'personnel',
+    'django_filters',
+    'compte',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -127,10 +130,20 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
-MEDIA_URL = '/image/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img/')
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = ('static')
+#MEDIA_URL = 'media/'
+#MEDIA_ROOT = [os.path.join(BASE_DIR, 'static/media/')]
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+MEDIA_URL = '/img/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'img')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

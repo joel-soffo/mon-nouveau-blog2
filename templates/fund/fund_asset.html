@@ -1,0 +1,133 @@
+{% extends 'main.html' %}
+{% load static %}
+
+<a href="fund_asset.html">
+    {% block content %}
+    <body>
+    <section id="main-content">
+      <section class="wrapper">
+
+           <div class="row mt">
+           <div class="col-lg-12">
+           <div>
+              <h1 style="color: blue">  PLEASE FILL IN THE VALUES CORRESPONDING TO EACH GEOGRAPHICAL AREA AND EACH TYPE OF ASSET </h1>
+           </div>
+            <h4><i class="fa fa-angle-right"></i> Geographical distribution of the fund </h4>
+              <div class="form-panel">
+              <div class="form">
+                <form class="cmxform form-horizontal style-form" action="{% url 'enregistrement_fundgeo' %}"  method="POST" >
+                    {% csrf_token %}
+                  <div class="form-group ">
+                    <label for="id_fund_geo" class="control-label col-lg-2">Fund Name</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="id_fund_geo" name="id_fund_geo" required>
+
+                          {% for i in fund %}
+                         <option value="{{ i.id_fund}}">{{ i.name_fund }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="id_geo_fund" class="control-label col-lg-2">Geographic</label>
+                    <div class="col-sm-10">
+                    <select class="form-control" id="id_geo_fund" name="id_geo_fund" required>
+
+                          {% for i in geo %}
+                         <option value="{{ i.id_geo }}">{{ i.name_geo }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                  </div>
+
+                <div class="form-group ">
+                        <label for="value_geo" class="control-label col-lg-2">value</label>
+                        <div class="col-lg-10">
+                         <input class="form-control" id="value_geo" type="text" name="value_geo" >
+                        </div>
+                    </div>
+
+
+                 <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Save</button>
+                      <button class="btn btn-theme04" type="button">Cancel</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              </div>
+           </div>
+           </div>
+
+         <div class="row mt">
+           <div class="col-lg-12">
+
+            <h4><i class="fa fa-angle-right"></i> Value of asset type  </h4>
+               <div class="form-panel">
+                   <div class="form">
+                    <form class="cmxform form-horizontal style-form" action="{% url 'enregistrement_fundassettype' %}"  method="POST" >
+                    {% csrf_token %}
+                    <div class="form-group ">
+                    <label for="id_fund_asset" class="control-label col-lg-2">Fund Name</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="id_fund_asset" name="id_fund_asset" required>
+
+                          {% for i in fund %}
+                         <option value="{{ i.id_fund}}">{{ i.name_fund }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
+                   <div class="form-group ">
+                    <label for="id_asset_fund" class="control-label col-lg-2">Asset type Name</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="id_asset_fund" name="id_asset_fund" required>
+
+                          {% for i in assettype %}
+                         <option value="{{ i.id_asset}}">{{ i.name_asset }}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                  </div>
+
+                    <div class="form-group ">
+                        <label for="value_asset" class="control-label col-lg-2">value</label>
+                        <div class="col-lg-10">
+                         <input class="form-control" id="value_asset" type="text" name="value_asset" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Save</button>
+                      <button class="btn btn-theme04" type="button">Cancel</button>
+                    </div>
+                    </div>
+                    </form>
+                   </div>
+               </div>
+           </div>
+         </div>
+      </section>
+    </section>
+
+
+
+
+
+
+
+
+    </body>
+
+
+
+
+
+
+
+
+    {% endblock %}

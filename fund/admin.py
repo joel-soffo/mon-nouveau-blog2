@@ -11,11 +11,22 @@ from .models import FundGeo,FundAssettype,FundPersonnel
 # Register your models here.
 admin.site.register(Fund)
 admin.site.register(Geo)
-admin.site.register(Gp)
+#admin.site.register(Gp)
 admin.site.register(Personnel)
 admin.site.register(Assettype)
-admin.site.register(FundGeo)
+#admin.site.register(FundGeo)
 admin.site.register(FundAssettype)
 admin.site.register(FundPersonnel)
 admin.site.register(Annee)
-admin.site.register(Trimestre)
+
+@admin.register(Trimestre)
+class TrimestreAdmin(admin.ModelAdmin):
+    list_display = ['name_trim','val_annee']
+
+@admin.register(FundGeo)
+class FundGeoAdmin(admin.ModelAdmin):
+    list_display = ['id_fund','value_asset_geo','id_geo']
+
+@admin.register(Gp)
+class GpAdmin(admin.ModelAdmin):
+    list_display = ['id_gp','name_gp']

@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -12,7 +12,7 @@
 
   <!-- Favicons -->
   <link href="{%  static 'img/logo_hc.png' %}" rel="icon">
-  <!-- link href="{%  static 'img/logo_hc.png' %}" rel="logo_hc">
+  <link href="{%  static 'img/logo_hc.png' %}" rel="logo_hc">
 
    <! --Bootstrap core CSS -->
   <link href="{%  static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -44,7 +44,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="home.html" class="logo"><b>HAMBERG<span>CAPITAL</span></b></a>
+      <a href="" class="logo" style="color: #0131B4"><b>HAMBERG<span style="color: #0131B4">CAPITAL</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -186,10 +186,10 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Extra Pages</span>
+              <span>Profil section</span>
               </a>
             <ul class="sub">
-              <li><a href="blank.html">Blank Page</a></li>
+              <li><a href="">Profil of Fund</a></li>
               <li><a href="login.html">Login</a></li>
               <li><a href="lock_screen.html">Lock Screen</a></li>
               <li><a href="profile.html">Profile</a></li>
@@ -202,9 +202,14 @@
               <span>Forms</span>
               </a>
             <ul class="sub">
-                <li><a href="{% url 'fund_form' %}">Viewing the fund update form  </a> </li>
-              <li><a href="/fund/historical_fund.html">Update fund history </a></li>
-              <li><a href="{% url 'personnal_form' %}" >Personnal Update fund </a></li>
+                <li><a href="{% url 'fund_form' %}"> FUND FORM  </a> </li>
+                <li><a href="{% url 'enregistrement_gp' %}">GP FORM </a> </li>
+                <li><a href="{% url 'enregistrement_geo' %}" }>ASSET TYPE AND GEOGRAPHICAL DISTRIBUTION OF FUND </a></li>
+                <li> <a href="{% url 'personnal_form' %}" }>PERSONNAL FORM</a></li>
+                <li> <a href="{% url 'personnal_form' %}" }>PERSONNAL FORM</a></li>
+                 <li> <a href="{% url 'enregistrement_fundgeo' %}" }>GEO DISTRIBUTION VALUE FORM</a></li>
+                <li> <a href="{% url 'enregistrement_fundassettype' %}" }>ASSET TYPE DISTRIBUTION VALUE FORM</a></li>
+
               <li><a href="/personnel/contactform.html">Contact Form</a></li>
             </ul>
           </li>
@@ -215,7 +220,7 @@
               </a>
             <ul class="sub">
               <li><a href="{% url 'fund_table' %}">Fund table </a></li>
-              <li><a href="historical_fund_table">Historical fund table</a></li>
+              <li><a href="{% url 'historical_data' %}">Historical fund table</a></li>
             </ul>
           </li>
           <li>

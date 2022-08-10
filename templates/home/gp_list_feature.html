@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+<a href="gp_list_feature.html">
+{% block content %}
+     <body >
+     <section id="main-content">
+      <section class="wrapper">
+
+           <div class="row mt">
+           <div class="col-lg-6 col-md-6 col-sm-12">
+           <div class="showback">
+               <div>
+              <h1 style="color: blue"> PROFIL OF GP </h1>
+              </div>
+                <h4><i class="fa fa-angle-right"></i> General Partner</h4>
+                <button type="button" class="btn btn-primary ">Edit Gp information</button>
+                <button type="button" class="btn btn-theme04">Delete Gp information</button>
+
+               <!-- /col-lg-12 -->
+           </div>
+           </div>
+
+
+
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <!--  BUTTONS SIZES -->
+            <div class="showback">
+              <h4><i class="fa fa-angle-right"></i> Informations </h4>
+                <table>
+              <tr>
+
+                <p><b>Gp name</b>: <a>{{ gp.name_gp }}</a> </p>
+                <p><b>First name of manager</b>: <a>{{ gp.prenoms_manager }}</a> </p>
+                <p><b>Last name of manager</b> : <a>{{ gp.name_manager }}</a></p>
+                <p><b>Email of manager</b> : <a>{{ gp.mail_manager }}</a></p>
+                <p><b>Telephone of manager</b> :<a>{{ gp.telephone_manager  }}</a></p>
+
+              </tr>
+
+
+
+
+            </table>
+
+
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+           </div>
+      </section>
+     </section>
+     </body>
+
+
+
+
+
+
+{% endblock %}
+</a>

@@ -1,10 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main.html' %}
+{% load static %}
+ <head>
+     <link href="css/style.css" rel="stylesheet">
+     <link href="css/style-responsive.css" rel="stylesheet">
+     <link href="css/table-responsive.css" rel="stylesheet">
 
-</body>
-</html>
+  </head>
+
+<a href="historical_fund_table.html">
+  {% block content %}
+   <body>
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Viewing fund  Data  </h3>
+
+
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> HISTORICAL DATA </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                  <a href="{% url 'enregistrement_fund' %}" > <p class="btn-info" style="text-align: center; height: 1cm;background-color: #002a80;font-size: x-large" >Add Fund</p></a>
+                    <tr>
+                      <th>id </th>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th>Ltv max </th>
+                      <th>Ltv current </th>
+                      <th>Ltv target </th>
+                      <th >NAV current </th>
+                      <th>GAV target </th>
+                      <th>GAV current </th>
+                      <th >Net Dividend </th>
+                      <th >Capital growth</th>
+                      <th >Total net return  </th>
+                      <th>TRI</th>
+                      <th>Minimum ticket </th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund }}</a></td>
+                            <td>{{ i.name_fund  }}</td>
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.ltv_max }} </td>
+                            <td >{{ i.ltv_current }} </td>
+                             <td >{{ i.ltv_target }} </td>
+                            <td >{{ i.nav_current }} </td>
+                            <td >{{ i.gav_target }} </td>
+                            <td >{{ i.gav_current }} </td>
+                            <td > {{ i.dividende_net }}</td>
+                            <td > {{ i.capital_growth }}</td>
+                            <td > {{ i.total_net_return}}</td>
+                            <td > {{ i.tri }}  </td>
+                            <td > {{ i.min_ticket}}</td>
+                            <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                            <td><a class="btn btn-info" href="  ">Edit</a></td>
+                             <td><a class="btn btn-danger" href=" {% url 'supprimer_fund' i.id_fund %}">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+
+
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+        <!-- /row -->
+
+
+      <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> DISTRIBUTION  OF FUND BY GEOGRAPHY</h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>id </th>
+                      <!--th>Fund Name</th-->
+                      <th> Geo </th>
+                      <th>Value(%) </th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in geo_fund %}
+
+                            <tr>
+                            <td><a href="" >{{ i.id_fund }}</a></td>
+                            <!--td>{{ i.name_fund  }}</td-->
+                            <td >{{ i.id_geo }} </td>
+                             <td >{{ i.value_asset_geo }} </td>
+                             <td><a class="btn btn-success" href=" ">Infos</a></td>
+                            <td><a class="btn btn-info" href="  ">Edit</a></td>
+                             <td><a class="btn btn-danger" href=" # ">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+
+
+
+      <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> DISTRIBUTION OF THE FUND BY ASSET TYPE  </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>id </th>
+                      <!--th>Fund Name</th-->
+                      <th> TYPE OF ASSET </th>
+                      <th>Value(%) </th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in asset_fund %}
+
+                            <tr>
+                            <td><a href="" >{{ i.id_fund }}</a></td>
+                            <!--td>{{ i.name_fund  }}</td-->
+                            <td >{{ i.id_asset}} </td>
+                             <td >{{ i.value_asset_type }} </td>
+                             <td><a class="btn btn-success" href=" ">Infos</a></td>
+                            <td><a class="btn btn-info" href=" ">Edit</a></td>
+                             <td><a class="btn btn-danger" href=" # ">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+      </section>
+      <!-- /wrapper -->
+    </section>
+   </body>
+
+  <script>
+    function valider(a) {
+        document.getElementById(a).style.display = '';
+    }
+  </script>
+
+
+
+  {% endblock %}
+
+
+
+
+
+</a>

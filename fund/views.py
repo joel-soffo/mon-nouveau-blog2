@@ -2,12 +2,11 @@
 from .forms import *
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from  .models import *
-#from chartit import Chart, DataPool
-
 from .forms import *
 from .models import *
-from fund.models import Gp
+from .filters import FundFiltre,GpFiltre
+from django.views import generic
+from django.contrib import messages
 # Create your views here.
 
 
@@ -37,9 +36,25 @@ def list_fund(request):
 def verification_table(request):
     gp=Gp.objects.all()
     funds=Fund.objects.all()
-    context={"gp":gp,"funds":funds}
+    myfilter = FundFiltre(request.GET,queryset=funds)
+    myfilter_gp=GpFiltre(request.GET,queryset=gp)
+    funds=myfilter.qs
+    gp=myfilter_gp.qs
+    context={"gp":gp,"funds":funds,'myfilter':myfilter,'myfilter_gp':myfilter_gp}
 
     return render(request,'fund/fund_table.html',context)
+
+def historical_fund_table(request):
+    gp=Gp.objects.all()
+    #gp1=Gp.objects.sets(id_gp=pk)
+    funds=Fund.objects.all()
+    asset_fund=FundAssettype.objects.all()
+    geo_fund=FundGeo.objects.all()
+    context={"gp":gp,"funds":funds,'asset_fund':asset_fund,'geo_fund': geo_fund}
+
+    return render(request,'fund/historical_fund_table.html',context)
+
+
 
 def enregistrement_trimestre(request):
     if request.method =='POST':
@@ -49,8 +64,26 @@ def enregistrement_trimestre(request):
         trimstre1=Trimestre.objects.create(name_trim=name_trimes,val_annee=Annee.objects.get(val_annee=val_annees))
         trimstre1.save()
         trim = Trimestre.objects.all()
+        annee=Annee.objects.all()
 
-    return render(request, 'fund/list_fund.html',{'name_trimes':trim})
+
+
+    return render(request, 'fund/list_fund.html',{'name_trimes':trim,'val_annees':annee})
+
+
+class FundCreateView(generic.CreateView):
+    model = Fund
+    form_class = FUndForm
+
+    def get_success_url(self):
+        return "/fundcreate_fund"
+
+    def form_valid(self, form):
+        gp = form.save(commit=False)
+        gp.id_gp = Gp.objects.get(pk=1)
+        messages.success(self.request, "Fond enregistré")
+        super(FundCreateView, self).form_valid(form)
+
 
 def enregistrement_fund(request):
     if request.method=='POST':
@@ -84,6 +117,7 @@ def enregistrement_fund(request):
         loan_interest=request.POST['loan_interest']
         loan_maturity=request.POST['loan_maturity']
         loan_type=request.POST['loan_type']
+        interest_rate_type=request.POST['interest_rate_type']
         loan_capped=request.POST['loan_capped']
         asset_number=request.POST['asset_number']
         tenants=request.POST['tenants']
@@ -133,9 +167,8 @@ def enregistrement_fund(request):
                                          tger_gav=tger_gav,portfolio_value=Portfolio_value,walt=walt,walb=walb,sfdr=sfdr,gresb=gresb,net_acquisition_income=net_acquisition_income,cash_and_cash=cash_and_cash,erv=erv,redemption=redemption,
                                           forward_exchange_hedging=forward_exchange_hedging,nbre_invetisseurs=Number_investor,ticket_moyen=medium_ticket,ticket_gros=big_ticket,ticket_petit=small_ticket,nbre_immeuble_labelise=number_buildings_labelled,
                                           fund_term=fund_term,desc_fund=fund_description,quaterly_reporting=quaterly_reporting,date_modification=date_modification,performance_fees=performance_fees,asset_acquisition_fees=asset_acquisition_fees,asset_exit_fees=asset_exit_fees,
-                                          other_fees=other_fees
-                                         #geo=Geo.objects.get(id_geo=geo_fund),id_asset=Assettype1.objects.get(id_asset=assettype_fund)
-                                         )
+                                          other_fees=other_fees,interest_rate_type=interest_rate_type
+                                        )
         fund_enreg.save()
         #fund_enreg.geo.set([geo_fund])
         #fund_enreg.assetype.set([ assettype_fund])
@@ -170,8 +203,10 @@ def enregistrement_gp(request):
 
         gp1=Gp.objects.create(name_gp=gpname,prenoms_manager=firstnamemanager,name_manager=lastnamemanager,mail_manager=emailmanager,telephone_manager=telephone_manager)
         gp1.save()
+        messages.success(request, "Gp Enregistré")
 
-    return render(request,'fund/list_fund.html')
+    return render(request,'fund/gp.html')
+
 
 def enregistrement_geo(request):
     if request.method=='POST':
@@ -179,7 +214,7 @@ def enregistrement_geo(request):
         geo1=Geo.objects.create(name_geo=geoname)
         geo1.save()
 
-    return  render(request,'fund/list_fund.html')
+    return  render(request,'fund/geo_asset.html')
 
 def enregistrement_assettype(request):
     if request.method=='POST':
@@ -187,4 +222,63 @@ def enregistrement_assettype(request):
         assettype1=Assettype.objects.create(name_asset=name_asset)
         assettype1.save()
 
-    return  render(request,'fund/list_fund.html')
+    return  render(request,'fund/geo_asset.html')
+
+
+def enregistrement_fundassettype(request):
+    if request.method=='POST':
+        id_fund_asset = request.POST['id_fund_asset']
+        id_asset_fund=request.POST['id_asset_fund']
+        value_asset=request.POST['value_asset']
+        fundassettype1=FundAssettype.objects.create(id_fund=Fund.objects.get(id_fund=id_fund_asset),id_asset=Assettype.objects.get(id_asset=id_asset_fund),value_asset_type =value_asset)
+        fundassettype1.save()
+
+        assettype = Assettype.objects.all()
+        fund=Fund.objects.all()
+        context={'assettype':assettype,'fund':fund}
+        return render(request, 'fund/fund_asset.html', context)
+    assettype = Assettype.objects.all()
+    fund = Fund.objects.all()
+    context = {'assettype': assettype, 'fund': fund}
+    return  render(request,'fund/fund_asset.html', context)
+
+
+def enregistrement_fundgeo(request):
+    if request.method=='POST':
+        id_fund_geo = request.POST['id_fund_geo']
+        id_geo_fund=request.POST['id_geo_fund']
+        value_geo=request.POST['value_geo']
+        fundgeo1=FundGeo.objects.create(id_fund=Fund.objects.get(id_fund=id_fund_geo),id_geo=Geo.objects.get(id_geo=id_geo_fund),value_asset_geo =value_geo)
+        fundgeo1.save()
+
+
+        fund=Fund.objects.all()
+        geo = Geo.objects.all()
+        context={'geo':geo,'fund':fund}
+        return render(request, 'fund/fund_asset.html', context)
+
+    fund = Fund.objects.all()
+    geo = Geo.objects.all()
+    context = {'geo': geo, 'fund': fund}
+
+    return  render(request,'fund/fund_asset.html',context)
+
+
+def profil_fund(request,pk=1):
+    fund=Fund.objects.get(id_fund =pk)
+
+    context={'fund':fund,}
+
+    return render(request, 'fund/profil_fund.html', context)
+
+def supprimer_fund(request,pk=1):
+    fund=Fund.objects.get(id_fund =pk)
+    if request.method == 'POST' :
+        fund.delete()
+        return HttpResponseRedirect('/')
+
+    context={'item':fund}
+
+
+
+    return render(request, 'fund/supprimer_fund.html', context)

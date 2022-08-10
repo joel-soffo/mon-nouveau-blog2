@@ -9,164 +9,12 @@
 
            <div class="row mt">
            <div class="col-lg-12">
-               <div>
-              <h1 style="color: blue"> FUND UPDATE FORM</h1>
+               <div class="p">
+              <h1 style="color: #002a80"> WELCOME TO THE FUND UPDATE FORM</h1>
               </div>
 
-            <h4><i class="fa fa-angle-right"></i> GP form </h4>
-            <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" action="{% url 'enregistrement_gp' %}"  method="POST" >
-                    {% csrf_token %}
-                  <div class="form-group ">
-                    <label for="gpname" class="control-label col-lg-2">GP's Name</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="gpname" type="text" name="gpname" required >
-                    </div>
-                  </div>
-
-
-                  <div class="form-group ">
-                    <label for="firstnamemanager" class="control-label col-lg-2">First Name's Manager</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="firstnamemanager" type="text" name="firstnamemanager"  >
-                    </div>
-                  </div>
-
-                  <div class="form-group ">
-                    <label for="lastnamemanager"    class="control-label col-lg-2">Last Name's Manager</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="lastnamemanager" type="text" name="lastnamemanager"  >
-                    </div>
-                  </div>
-
-
-                  <div class="form-group ">
-                    <label for="emailmanager" class="control-label col-lg-2">Email's Manager</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="emailmanager" type="text" name="emailmanager"  >
-                    </div>
-                  </div>
-
-                  <div class="form-group ">
-                    <label for="telephone_manager" class="control-label col-lg-2">Telephone Manager</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="telephone_manager" type="number" name="telephone_manager"  >
-                    </div>
-                  </div>
-
-
-                  <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Save</button>
-                      <button class="btn btn-theme04" type="button">Cancel</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
+               <!-- /col-lg-12 -->
         </div>
-
-    <h4><i class="fa fa-angle-right"></i> Geographical distribution of the fund </h4>
-        <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" action="{% url 'enregistrement_geo' %}"  method="POST" >
-                    {% csrf_token %}
-                  <div class="form-group ">
-                    <label for="geoname" class="control-label col-lg-2">Geographic Name</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="geoname" type="text" name="geoname" >
-                    </div>
-                  </div>
-
-                  </div>
-
-
-                  <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Save</button>
-                      <button class="btn btn-theme04" type="button">Cancel</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-
-   <h4> <i class="fa fa-angle-right"></i> Trimestre </h4>
-    <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" action="{% url 'enregistrement_trimestre' %}"  method="POST" >
-                    {% csrf_token %}
-
-                <div class="form-group ">
-                    <label for="trimestres" class="control-label col-lg-2">Trimestre</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="trimestres" type="text" name="name_trimes" >
-                    </div>
-                  </div>
-
-                <div class="form-group">
-                  <label for="val_annees" class="col-sm-2 col-sm-2 control-label">Année </label>
-                  <div class="col-sm-10">
-                      <select class="form-control" id="val_annees" name="val_annees">
-
-                          {% for a in annee %}
-                          <option>{{ a.val_annee }}</option>
-                          {% endfor %}
-                      </select>
-                  </div>
-                </div>
-
-                  <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Save</button>
-                      <button class="btn btn-theme04" type="button">Cancel</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-     <h4><i class="fa fa-angle-right"></i> Different type of asset </h4>
-         <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" action="{% url 'enregistrement_assettype' %}"  method="POST" >
-                    {% csrf_token %}
-                  <div class="form-group ">
-                    <label for="name_asset" class="control-label col-lg-2">Asset type name</label>
-                    <div class="col-lg-10">
-                         <input class="form-control" id="name_asset" type="text" name="name_asset" >
-                    </div>
-                  </div>
-
-                  </div>
-
-             <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Save</button>
-                      <button class="btn btn-theme04" type="button">Cancel</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
 
 
 
@@ -176,7 +24,15 @@
         <div class="row mt">
           <div class="col-lg-12">
             <div class="form-panel">
-              <h4 class="mb"><i class="fa fa-angle-right"></i> Fund main features</h4>
+
+             <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> General features of fund </h3>
+
+             </div>
+            <h5 style="color: #002a80">   </h5>
+
+              <!--h4 class="mb"><i class="fa fa-angle-right"></i> Fund main features</h4-->
+
               <form class="form-horizontal style-form" method="POST" action="{% url 'enregistrement_fund' %}">
                 {% csrf_token %}
                <div class="form-group">
@@ -197,11 +53,13 @@
 
                 <div class="form-group">
                   <label for="annee" class="col-sm-2 col-sm-2 control-label">Année </label>
+                                <a> <h6 style="color: #002a80">Please choose the value corresponding to the year of the fund update </h6></a>
+
                   <div class="col-sm-10">
                       <select class="form-control" id="annee" name="annee">
 
                           {% for a in annee %}
-                          <option>{{ a.val_annee }}</option>
+                          <option value="{{ a.val_annee }}">{{ a.val_annee }}</option>
                           {% endfor %}
                       </select>
                   </div>
@@ -213,19 +71,17 @@
                     <select class="form-control" id="trimestre_fund" name="trimestre_fund" required>
 
                           {% for t in trimestre %}
+
                          <option value="{{ t.id_trim }}">{{ t.name_trim }}</option>
                           {% endfor %}
                       </select>
-
-
                   </div>
-     </div>
-
-
+                </div>
 
                 <div class="form-group">
                   <label for="gp_name_fund" class="col-sm-2 col-sm-2 control-label">Name Gp </label>
-                  <div class="col-sm-10">
+                    <a> <h6 style="color: #002a80"> Please select again the gp corresponding to the fund </h6></a>
+                   <div class="col-sm-10">
                       <select class="form-control" id="gp_name_fund" name="gp_name_fund" required>
 
                           {% for g in gp %}
@@ -253,13 +109,46 @@
                   </div>
 
                   <div class="form-group ">
-                    <label for="gpalignement" class="control-label col-lg-2">GP Alignement</label>
+                    <label for="gpalignement" class="control-label col-lg-2">GP Alignement (€ M)</label>
                     <div class="col-lg-10">
-                         <input class="form-control" id="gpalignement" type="number" step="any" name="gpalignement"  >
+                         <input class="form-control" id="gpalignement" type="number" step="any" name="gpalignement" value="0" >
                     </div>
                   </div>
 
+               <div class="form-group">
+                  <label for="fund_term" class="col-sm-2 col-sm-2 control-label">Fund term </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="fund_term" type="text" name="fund_term"  >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="fund_description" class="col-sm-2 col-sm-2 control-label">Fund description  </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="fund_description" type="text" name="fund_description"  >
+                  </div>
+                </div>
 
+
+                        <div class="form-group">
+                  <label for="inception"  class="col-sm-2 col-sm-2 control-label">Inception   </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="inception" type="date" name="inception"  >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nav_calculation_Method"  class="col-sm-2 col-sm-2 control-label">Nav Calculation Method   </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="nav_calculation_Method" type="text" name="nav_calculation_method"  >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="strategy_summary" class="col-sm-2 col-sm-2 control-label"> Strategy Summary  </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="strategy_summary" type="text" name="strategy_summary"  >
+                  </div>
+                </div>
 
 
 
@@ -299,54 +188,74 @@
                      <!--input class="form-control" id="type" type="text" name="type"-->
                   </div>
                 </div>
+
+              <div class="form-group">
+                  <label for="quaterly_reporting" class="col-sm-2 col-sm-2 control-label">Quaterly reporting  </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="quaterly_reporting" type="file" name="quaterly_reporting"  >
+                  </div>
+                </div>
+
+
+               <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> Historical data </h3>
+               </div>
+
+
+
+
                 <div class="form-group">
-                  <label for="ltvmax" class="col-sm-2 col-sm-2 control-label">LTV Max</label>
+                  <label for="ltvmax" class="col-sm-2 col-sm-2 control-label">LTV Max (% )</label>
+                     <a><h6 style="color: #002a80"> Concerning the  leverage information, the data will be expressed as a percentage. Please pay attention to this.If you have an interval instead, please enter the average. </h6> </a>
                   <div class="col-sm-10">
                      <input  class="form-control" id="ltvmax" type="number" step="any"  name="ltvmax"  value="0">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="ltvcurrent" class="col-sm-2 col-sm-2 control-label">LTV Current </label>
+                  <label for="ltvcurrent" class="col-sm-2 col-sm-2 control-label">LTV Current (% ) </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="ltvcurrent" type="number" step="any"  name="ltvcurrent" value="0" >
                   </div>
                 </div>
                   <div class="form-group">
-                  <label for="ltvtarget"  class="col-sm-2 col-sm-2 control-label">LTV Target</label>
+                  <label for="ltvtarget"  class="col-sm-2 col-sm-2 control-label">LTV Target (% )</label>
                   <div class="col-sm-10">
                     <input class="form-control" id="ltvtarget" type="number"  step="any" name="ltvtarget" value="0" >
                   </div>
                 </div>
 
+
+
                 <div class="form-group">
-                  <label for="gavcurrent"  class="col-sm-2 col-sm-2 control-label">GAV Current</label>
+                  <label for="gavcurrent"  class="col-sm-2 col-sm-2 control-label">GAV Current(€ M) </label>
+                    <a><h6 style="color: #002a80"> For data concerning Gav and Nav, please enter them in millions of euros</h6></a>
                   <div class="col-sm-10">
                     <input class="form-control" id="gavcurrent" type="number" step="any"  name="gavcurrent" value="0" >
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="gavtarget"  class="col-sm-2 col-sm-2 control-label">GAV Target</label>
+                  <label for="gavtarget"  class="col-sm-2 col-sm-2 control-label">GAV Target (€ M)</label>
                   <div class="col-sm-10">
                     <input class="form-control" id="gavtarget" type="number" step="any"  name="gavtarget" value="0"  >
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="navcurrent" class="col-sm-2 col-sm-2 control-label">NAV Current </label>
+                  <label for="navcurrent" class="col-sm-2 col-sm-2 control-label">NAV Current (€ M) </label>
                   <div class="col-sm-10">
                      <input class="form-control" id="navcurrent" type="number" step="any" name="navcurrent" value="0" >
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="netdividend" class="col-sm-2 col-sm-2 control-label">Net Dividend  </label>
+                  <label for="netdividend" class="col-sm-2 col-sm-2 control-label">Net Dividend (%)  </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="netdividend" type="number" step="any" name="netdividend" value="0"  >
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label  for="capital_growth" class="col-sm-2 col-sm-2 control-label">Capital growth </label>
+                  <label  for="capital_growth" class="col-sm-2 col-sm-2 control-label">Capital growth (%) </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="capital_growth" type="number" step="any" name="capital_growth" value="0"  >
                   </div>
@@ -354,7 +263,7 @@
 
 
                 <div class="form-group">
-                  <label for="total_net_return"  class="col-sm-2 col-sm-2 control-label">Net total return </label>
+                  <label for="total_net_return"  class="col-sm-2 col-sm-2 control-label">Net total return (%) </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="total_net_return" type="number" step="any" name="total_net_return" value="0" >
                   </div>
@@ -362,7 +271,7 @@
 
 
                 <div class="form-group">
-                  <label  for="tri" class="col-sm-2 col-sm-2 control-label">TRI  </label>
+                  <label  for="tri" class="col-sm-2 col-sm-2 control-label">TRI (%) </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="tri" type="number" step="any" name="tri" value="0" >
                   </div>
@@ -373,34 +282,19 @@
 
 
                 <div class="form-group">
-                  <label  for="minimun_ticket" class="col-sm-2 col-sm-2 control-label">Minimum ticket   </label>
+                  <label  for="minimun_ticket" class="col-sm-2 col-sm-2 control-label">Minimum ticket (€ M)   </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="minimun_ticket" type="number" step="any" name="minimum_ticket" value="0" >
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="inception"  class="col-sm-2 col-sm-2 control-label">Inception   </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="inception" type="date" name="inception"  >
-                  </div>
+                <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> Liquidity </h3>
                 </div>
 
-                <div class="form-group">
-                  <label for="nav_calculation_Method"  class="col-sm-2 col-sm-2 control-label">Nav Calculation Method   </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="nav_calculation_Method" type="text" name="nav_calculation_method"  >
-                  </div>
-                </div>
 
                 <div class="form-group">
-                  <label for="strategy_summary" class="col-sm-2 col-sm-2 control-label"> Strategy Summary  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="strategy_summary" type="text" name="strategy_summary"  >
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label  for="queue_value"  class="col-sm-2 col-sm-2 control-label"> Queue Value  </label>
+                  <label  for="queue_value"  class="col-sm-2 col-sm-2 control-label"> Queue Value (€ M)  </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="queue_value" type="number" step="any" name="queue_value" value="0" >
                   </div>
@@ -411,7 +305,7 @@
                   <div class="col-sm-10">
                     <!--input class="form-control" id="queue_term" type="text" name="queue_term"-->
                      <select class="form-control" id="queue_term" name="queue_term" >
-                         <option >   </option>
+                         <option >0000   </option>
                          <option value="1">1990</option>
                          <option value="2">1991</option>
                          <option value="3">1992</option>
@@ -423,10 +317,44 @@
                          <option value="9">1998</option>
                          <option value="10">1999</option>
                          <option value="11">2000</option>
+                         <option value="12">2001</option>
+                         <option value="13">2002</option>
+                         <option value="14">2003</option>
+                         <option value="15">2004</option>
+                         <option value="16">2005</option>
+                         <option value="17">2006</option>
+                         <option value="18">2007</option>
+                         <option value="19">2008</option>
+                         <option value="20">2009</option>
+                         <option value="21">2010</option>
+                         <option value="22">2011</option>
+                         <option value="23">2012</option>
+                         <option value="24">2013</option>
+                         <option value="25">2014</option>
+                         <option value="26">2015</option>
+                         <option value="27">2016</option>
+                         <option value="28">2017</option>
+                         <option value="29">2018</option>
+                         <option value="30">2019</option>
+                         <option value="31">2020</option>
+                         <option value="32">2021</option>
+                         <option value="33">2022</option>
+                         <option value="34">2023</option>
                      </select>
 
                   </div>
                 </div>
+
+              <div class="form-group">
+                  <label for="redemption" class="col-sm-2 col-sm-2 control-label"> Redemption </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="redemption" type="text" name="redemption"  >
+                  </div>
+                </div>
+
+               <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> GEARING / DEBT DATA </h3>
+               </div>
 
                  <div class="form-group">
                   <label for="loan_interest" class="col-sm-2 col-sm-2 control-label">  Interest rate (%) </label>
@@ -445,7 +373,7 @@
                   <div class="col-sm-10">
                     <!--input class="form-control" id="loan_maturity" type="text" name="loan_maturity"-->
                     <select class="form-control" id="loan_maturity" name="loan_maturity" >
-                         <option >   </option>
+                         <option > 0000   </option>
                          <option value="1">1990</option>
                          <option value="2">1991</option>
                          <option value="3">1992</option>
@@ -457,6 +385,29 @@
                          <option value="9">1998</option>
                          <option value="10">1999</option>
                          <option value="11">2000</option>
+                         <option value="12">2001</option>
+                         <option value="13">2002</option>
+                         <option value="14">2003</option>
+                         <option value="15">2004</option>
+                         <option value="16">2005</option>
+                         <option value="17">2006</option>
+                         <option value="18">2007</option>
+                         <option value="19">2008</option>
+                         <option value="20">2009</option>
+                         <option value="21">2010</option>
+                         <option value="22">2011</option>
+                         <option value="23">2012</option>
+                         <option value="24">2013</option>
+                         <option value="25">2014</option>
+                         <option value="26">2015</option>
+                         <option value="27">2016</option>
+                         <option value="28">2017</option>
+                         <option value="29">2018</option>
+                         <option value="30">2019</option>
+                         <option value="31">2020</option>
+                         <option value="32">2021</option>
+                         <option value="33">2022</option>
+                         <option value="34">2023</option>
                      </select>
                   </div>
                 </div>
@@ -465,16 +416,53 @@
                   <label for="loan_type" class="col-sm-2 col-sm-2 control-label"> Loan type </label>
                   <div class="col-sm-10">
                      <select class="form-control" id="loan_type" name="loan_type" >
-                         <option value="A">Amortized</option>
-                         <option value="B">Bullet</option>
-                         <option value="M">Mixed </option>
+                          <option>   </option>
+                         <option value="io">Interest only</option>
+                         <option value="b">Bullet</option>
+                         <option value="ic">Interest + capital </option>
 
-                    <!--input class="form-control" id="loan_type" type="text" step="any" name="loan_type"-->
                      </select>
                   </div>
                 </div>
 
 
+              <div class="form-group">
+                  <label for="interest_rate_type" class="col-sm-2 col-sm-2 control-label"> Interest rate type </label>
+                  <div class="col-sm-10">
+                     <select class="form-control" id="interest_rate_type" name="interest_rate_type" >
+                          <option>   </option>
+                         <option value="fr">Fixe rate </option>
+                         <option value="va">Variable</option>
+
+                     </select>
+                  </div>
+                </div>
+
+
+               <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> Portfolio </h3>
+               </div>
+
+              <div class="form-group">
+                  <label for="Portfolio_value" class="col-sm-2 col-sm-2 control-label"> Portfolio value </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="Portfolio_value" type="number" step="any" name="Portfolio_value" value="0" >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="walt" class="col-sm-2 col-sm-2 control-label"> WALT </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="walt" type="number" step="any" name="walt" value="0" >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="walb" class="col-sm-2 col-sm-2 control-label"> WALB </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="walb" type="number" step="any" name="walb" value="0" >
+                  </div>
+                </div>
 
                 <div class="form-group">
                   <label for="asset_number" class="col-sm-2 col-sm-2 control-label">  Number of asset</label>
@@ -490,18 +478,48 @@
                   </div>
                 </div>
 
+
                 <div class="form-group">
-                  <label for="tof" class="col-sm-2 col-sm-2 control-label"> Financial occupancy rate </label>
+                  <label for="tof" class="col-sm-2 col-sm-2 control-label"> Financial occupancy rate(%) </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="tof" type="number" step="any" name="tof" value="0" >
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="por" class="col-sm-2 col-sm-2 control-label"> Physical occupancy rate </label>
+                  <label for="por" class="col-sm-2 col-sm-2 control-label"> Physical occupancy rate (%) </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="por" type="number" step="any" name="por" value="0" >
                   </div>
                 </div>
+
+
+              <div class="form-group">
+                  <label for="net_acquisition_income"  class="col-sm-2 col-sm-2 control-label"> Net operating income (NOI) </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="net_acquisition_income" type="number" step="any" name="net_acquisition_income" value="0" >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="cash_and_cash" class="col-sm-2 col-sm-2 control-label"> Cash and cash</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="cash_and_cash" type="number" step="any" name="cash_and_cash" value="0" >
+                  </div>
+                </div>
+
+                <div  class="form-group">
+                  <label for="erv" class="col-sm-2 col-sm-2 control-label"> ERV (+/- % )</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="erv" type="number" step="any" name="erv" value="0" >
+                  </div>
+                </div>
+
+              <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> Fees </h3>
+
+              </div>
+              <h5 style="color: #002a80"> Please enter the management fee information. If there is no information on one section just skip to the next one  </h5>
+
 
                 <div class="form-group">
                   <label for="management_fees" class="col-sm-2 col-sm-2 control-label"> Management fees  </label>
@@ -539,6 +557,13 @@
                   </div>
                 </div>
 
+              <div class="form-group">
+                  <label for="forward_exchange_hedging" class="col-sm-2 col-sm-2 control-label"> Forword exchange hedging</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="forward_exchange_hedging" type="text" name="forward_exchange_hedging"  >
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <label for="ter_nav" class="col-sm-2 col-sm-2 control-label"> TER NAV </label>
                   <div class="col-sm-10">
@@ -568,26 +593,50 @@
                   </div>
                 </div>
 
+              <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> Investors </h3>
+
+              </div>
+
+
                 <div class="form-group">
-                  <label for="Portfolio_value" class="col-sm-2 col-sm-2 control-label"> Portfolio value </label>
+                  <label for="Number_investor" class="col-sm-2 col-sm-2 control-label"> Number of investors </label>
                   <div class="col-sm-10">
-                    <input class="form-control" id="Portfolio_value" type="number" step="any" name="Portfolio_value" value="0" >
+                    <input class="form-control" id="Number_investor" type="number" name="Number_investor" value="0" >
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="walt" class="col-sm-2 col-sm-2 control-label"> WALT </label>
+                  <label for="medium_ticket"  class="col-sm-2 col-sm-2 control-label"> Medium Ticket (€ M)  </label>
                   <div class="col-sm-10">
-                    <input class="form-control" id="walt" type="number" step="any" name="walt" value="0" >
+                    <input class="form-control" id="medium_ticket" type="number" step="any" name="medium_ticket" value="0" >
                   </div>
                 </div>
 
+
+
                 <div class="form-group">
-                  <label for="walb" class="col-sm-2 col-sm-2 control-label"> WALB </label>
+                  <label  for="big_ticket" class="col-sm-2 col-sm-2 control-label">Big Ticket (€ M) </label>
                   <div class="col-sm-10">
-                    <input class="form-control" id="walb" type="number" step="any" name="walb" value="0" >
+                    <input class="form-control" id="big_ticket" type="number" step="any" name="big_ticket" value="0" >
                   </div>
                 </div>
+
+
+                <div class="form-group">
+                  <label for="small_ticket" class="col-sm-2 col-sm-2 control-label">Small Ticket (€ M)  </label>
+                  <div class="col-sm-10">
+                    <input class="form-control" id="small_ticket" type="number" step="any" name="small_ticket" value="0" >
+                  </div>
+                </div>
+
+
+
+
+             <div class="p">
+                  <h3 style="color: #002a80"> <i class="fa fa-angle-right"></i> ESG </h3>
+
+              </div>
 
                 <div class="form-group">
                   <label for="sfdr" class="col-sm-2 col-sm-2 control-label"> SFDR </label>
@@ -603,98 +652,18 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="net_acquisition_income"  class="col-sm-2 col-sm-2 control-label"> Net operating income (NOI) </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="net_acquisition_income" type="number" step="any" name="net_acquisition_income" value="0" >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="cash_and_cash" class="col-sm-2 col-sm-2 control-label"> Cash and cash</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="cash_and_cash" type="number" step="any" name="cash_and_cash" value="0" >
-                  </div>
-                </div>
-
-                <div  class="form-group">
-                  <label for="erv" class="col-sm-2 col-sm-2 control-label"> ERV (+/- % )</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="erv" type="number" step="any" name="erv" value="0" >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="redemption" class="col-sm-2 col-sm-2 control-label"> Redemption </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="redemption" type="text" name="redemption"  >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="forward_exchange_hedging" class="col-sm-2 col-sm-2 control-label"> Forword exchange hedging</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="forward_exchange_hedging" type="text" name="forward_exchange_hedging"  >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="Number_investor" class="col-sm-2 col-sm-2 control-label"> Number of investors </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="Number_investor" type="number" name="Number_investor" value="0" >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="medium_ticket"  class="col-sm-2 col-sm-2 control-label"> Medium Ticket  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="medium_ticket" type="number" step="any" name="medium_ticket" value="0" >
-                  </div>
-                </div>
-
-
-
-                <div class="form-group">
-                  <label  for="big_ticket" class="col-sm-2 col-sm-2 control-label">Big Ticket  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="big_ticket" type="number" step="any" name="big_ticket" value="0" >
-                  </div>
-                </div>
-
-
-                <div class="form-group">
-                  <label for="small_ticket" class="col-sm-2 col-sm-2 control-label">Small Ticket  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="small_ticket" type="number" step="any" name="small_ticket" value="0" >
-                  </div>
-                </div>
-
-                <div class="form-group">
+                 <div class="form-group">
                   <label for="number_buildings_labelled" class="col-sm-2 col-sm-2 control-label">Number of buildings labelled </label>
                   <div class="col-sm-10">
                     <input class="form-control" id="number_buildings_labelled" type="number" name="number_buildings_labelled" value="0" >
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="fund_term" class="col-sm-2 col-sm-2 control-label">Fund term </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="fund_term" type="text" name="fund_term"  >
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="fund_description" class="col-sm-2 col-sm-2 control-label">Fund description  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="fund_description" type="text" name="fund_description"  >
-                  </div>
-                </div>
 
-                <div class="form-group">
-                  <label for="quaterly_reporting" class="col-sm-2 col-sm-2 control-label">Quaterly reporting  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="quaterly_reporting" type="file" name="quaterly_reporting"  >
-                  </div>
-                </div>
+
+
+
+
 
 
 
@@ -736,6 +705,19 @@
       </section>
       <!-- /wrapper -->
     </section>
+
+    <style>
+      div.p{
+          text-align: center;
+
+      }
+
+
+    </style>
+
+
+
+
 
     </body>
 </a>

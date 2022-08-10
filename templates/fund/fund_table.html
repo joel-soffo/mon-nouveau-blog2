@@ -1,10 +1,9 @@
 {% extends 'main.html' %}
 {% load static %}
  <head>
-
-   <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet">
-  <link href="css/table-responsive.css" rel="stylesheet">
+     <link href="css/style.css" rel="stylesheet">
+     <link href="css/style-responsive.css" rel="stylesheet">
+     <link href="css/table-responsive.css" rel="stylesheet">
 
   </head>
 
@@ -12,22 +11,39 @@
   {% block content %}
    <body>
     <section id="main-content">
+
+
+
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Viewing fund  Data  </h3>
         <div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
+             <h4><i class="fa fa-angle-right"></i> FILTERS </h4>
+                <form method="get">
+                      {{ myfilter_gp.form }}
+                  <button class="btn btn-primary" type="submit">Search</button>
+
+                </form>
               <h4><i class="fa fa-angle-right"></i> GP Table </h4>
               <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
-                  <thead>
-                    <tr>
-                      <th>Gp Name</th>
 
+
+                  <thead>
+                    <a href="{% url 'enregistrement_gp' %}" > <p class="btn-info" style="text-align: center; height: 1cm;background-color: #002a80;font-size: x-large" >Add Gp</p></a>
+
+                    <tr>
+                      <th>id </th>
+                      <th>Gp Name</th>
                       <th >First Name Manager</th>
                       <th >Last Name Manager</th>
                       <th >Email Manager</th>
-                      <th>Validation</th>
+                      <th >Telephone Manager</th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+
                     </tr>
 
                   </thead>
@@ -35,18 +51,22 @@
 
                         {% for i in gp %}
                             <tr>
+                            <td><a href=" {% url 'profil_gp' i.id_gp %} ">{{ i.id_gp }}</a></td>
                             <td>{{ i.name_gp  }}</td>
-
                             <td >{{ i.prenoms_manager }} </td>
                             <td >{{ i.name_manager }} </td>
                             <td >{{ i.mail_manager }} </td>
+                            <td >{{ i.telephone_manager }} </td>
 
-                          <!--  <td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td>-->
+                            <td><a class="btn btn-success" href=" {% url 'profil_gp' i.id_gp %} ">Infos</a></td>
+                            <td><a class="btn btn-info" href="{% url 'modifier_gp' i.id_gp  %} ">Edit</a></td>
+                             <td><a class="btn btn-danger" href="{% url 'supprimer_gp' i.id_gp  %} ">Delete</a></td>
+                           <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
                             </tr>
-
-
                    {% endfor %}
                   </tbody>
+
+
                 </table><br><br>
               </section>
             </div>
@@ -55,32 +75,54 @@
           <!-- /col-lg-4 -->
         </div>
         <!-- /row -->
+
+      <section class="wrapper">
          <div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i> Fund Table </h4>
+
+              <h4><i class="fa fa-angle-right"></i> FILTERS </h4>
+                <form method="get">
+                      {{ myfilter.form }}
+                  <button class="btn btn-primary" type="submit">Search</button>
+
+                </form>
+            </div>
+          </div>
+         </div>
+    </section>
+
+
+
+       <section class="wrapper">
+         <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> GENERAL FEATURES OF FUND </h4>
               <section id="unseen1">
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>
+                   <a href="{% url 'enregistrement_fund' %}" > <p class="btn-info" style="text-align: center; height: 1cm;background-color: #002a80;font-size: x-large" >Add Fund</p></a>
                     <tr>
+                      <th>id </th>
                       <th>Fund Name</th>
                       <th >Year</th>
                       <th >Quarter</th>
                       <th>GP </th>
-
+                      <th>Legal structure </th>
+                      <th>Country-domicile-fund</th>
                       <th >Open-close</th>
                       <th >Structure</th>
                       <th >Type </th>
-                      <th>Ltv max</th>
-                      <th>Ltv current</th>
-                      <th>Ltv target</th>
-                      <th>Gav current</th>
-                      <th>Gav target</th>
-                      <th>Loan interest</th>
-                      <th>Loan maturity</th>
-                      <th>Loan type</th>
-                      <th>Loan capped</th>
-                      <th>Validation</th>
+                      <th>Gp alignement</th>
+                      <th>Fund term</th>
+                      <th>Fund description</th>
+                      <th>Inception</th>
+
+                      <th>Strategy summary</th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
 
 
                     </tr>
@@ -90,24 +132,101 @@
 
                         {% for i in funds %}
                             <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund  }}</a></td>
                             <td>{{ i.name_fund  }}</td>
-
                             <td >{{ i.val_annee}}</td>
                             <td >{{ i.id_trim }} </td>
                             <td >{{ i.id_gp }} </td>
+                            <td> {{ i.legal_structure }}</td>
+                            <td>{{ i.pays_domiciliation_fund }}</td>
                             <td > {{ i.open_close }}</td>
                             <td > {{ i.structure }}</td>
                             <td > {{ i.type }}</td>
-                            <td > {{ i.ltv_max }}</td>
-                            <td > {{ i.ltv_current}}</td>
-                            <td > {{ i.ltv_target}}</td>
-                            <td > {{ i.gav_current}}</td>
-                            <td > {{ i.gav_target}}</td>
-                            <td > {{ i.loan_interest}}</td>
-                            <td > {{ i.loan_maturity}}</td>
-                            <td > {{ i.loan_type}}</td>
-                            <td > {{ i.loan_capped}}</td>
-                            <td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td>
+                            <td > {{ i.gp_alignement }}</td>
+                            <td > {{ i.fund_term}}</td>
+                            <td > {{ i.desc_fund}}</td>
+                            <td > {{ i.inception}}</td>
+
+                            <td > {{ i.strategy_summary}}</td>
+                             <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                             <td><a class="btn btn-info" href=" # ">Edit</a></td>
+                             <td><a class="btn btn-danger" href=" {% url 'supprimer_fund' i.id_fund %} ">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+       </section>
+
+
+
+
+
+
+
+
+
+
+
+       <section class="wrapper">
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> PORTFOLIO </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>id </th>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th >Portfolio value </th>
+                      <th >WALT </th>
+                      <th >WALB</th>
+                      <th >Number of asset </th>
+                      <th>Number of tenant</th>
+                      <th>Financial occupancy rate</th>
+                      <th>Physical occupancy rate</th>
+                      <th>Net operating income (NOI)</th>
+                      <th>Cash and cash</th>
+                      <th>ERV</th>
+                      <th>Infos</th>
+                      <th>Mettre à jour</th>
+                      <th>Supprimer</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund }}</a></td>
+                            <td>{{ i.name_fund  }}</td>
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.portfolio_value }} </td>
+                            <td > {{ i.walt}}</td>
+                            <td > {{ i.walb}}</td>
+                            <td > {{ i.asset_number}}</td>
+                            <td > {{ i.tenants }}  </td>
+                            <td > {{ i.taux_occup_financiere }}  </td>
+                            <td > {{ i.taux_occup_physique }}  </td>
+                            <td > {{ i.net_acquisition_income }}  </td>
+                            <td > {{ i.cash_and_cash }}  </td>
+                            <td > {{ i.erv}}  </td>
+                             <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                            <td><a class="btn btn-info" href="  ">Edit</a></td>
+                             <td><a class="btn btn-danger" href="{% url 'supprimer_fund' i.id_fund %} ">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
                             </tr>
 
 
@@ -121,33 +240,31 @@
           <!-- /col-lg-4 -->
         </div>
 
+       </section>
 
 
 
-        <div class="row mt">
+      <div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i> Fund Table2 </h4>
+              <h4><i class="fa fa-angle-right"></i> GEARING / DEBT DATA </h4>
               <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>
                     <tr>
+                      <th>id </th>
                       <th>Fund Name</th>
                       <th >Year</th>
                       <th >Quarter</th>
                       <th>GP </th>
-                      <th >NAV current </th>
-                      <th >Net Dividend </th>
-                      <th >Capital growth</th>
-                      <th >Total net return  </th>
-                      <th>TRI</th>
-                      <th>Minimum ticket </th>
-                      <th>Inception </th>
-                      <th>Nav Calculation Method </th>
-                      <th>Strategy Summary</th>
-                      <th>Queue Value </th>
-                      <th>Queue Term</th>
-                      <th>Validation</th>
+                      <th >Interest rate </th>
+                      <th >Capped rate cost </th>
+                      <th >Loan maturity</th>
+                      <th >Loan type  </th>
+                      <th>Interest rate type</th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
                     </tr>
 
                   </thead>
@@ -155,23 +272,20 @@
 
                         {% for i in funds %}
                             <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund }}</a></td>
                             <td>{{ i.name_fund  }}</td>
-
                             <td >{{ i.val_annee}}</td>
                             <td >{{ i.id_trim }} </td>
                             <td >{{ i.id_gp }} </td>
-                            <td >{{ i.nav_current }} </td>
-                            <td > {{ i.dividende_net }}</td>
-                            <td > {{ i.capital_growth }}</td>
-                            <td > {{ i.total_net_return}}</td>
-                          <!--  <td > {{ i.tri }}</td>-->
-                            <td > {{ i.min_ticket}}</td>
-                            <td > {{ i.inception}}</td>
-                            <td > {{ i.nav_calculation_method}}</td>
-                            <td > {{ i.strategy_summary}}</td>
-                            <td > {{ i.queue_value}}</td>
-                            <td > {{ i.queue_term}}</td>
-                            <td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td>
+                            <td >{{ i.loan_interest }} </td>
+                            <td > {{ i.loan_capped }}</td>
+                            <td > {{ i.loan_maturity}}</td>
+                            <td > {{ i.loan_type}}</td>
+                            <td > {{ i.interest_rate_type }}  </td>
+                             <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                            <td><a class="btn btn-info" href=" ">Edit</a></td>
+                             <td><a class="btn btn-danger" href="{% url 'supprimer_fund' i.id_fund %}">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
                             </tr>
 
 
@@ -187,8 +301,242 @@
         <!-- /row -->
       </section>
       <!-- /wrapper -->
+
+    <section class="wrapper">
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> FEES </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>id </th>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th >Management fees </th>
+                      <th >Performance fees </th>
+                      <th >Asset acquisition fees</th>
+                      <th >Asset exit fees </th>
+                      <th>Other fees</th>
+                      <th>Forword exchange hedging</th>
+                      <th>TER NAV</th>
+                      <th>TER GAV</th>
+                      <th>TGER NAV</th>
+                      <th>TGER GAV</th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund }}</a></td>
+                            <td>{{ i.name_fund  }}</td>
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.management_fees }} </td>
+                            <td > {{ i.performance_fees}}</td>
+                            <td > {{ i.asset_acquisition_fees}}</td>
+                            <td > {{ i.asset_exit_fees}}</td>
+                            <td > {{ i.other_fees }}  </td>
+                            <td > {{ i.forward_exchange_hedging }}  </td>
+                            <td > {{ i.ter_nav }}  </td>
+                            <td > {{ i.ter_gav }}  </td>
+                            <td > {{ i.tger_nav }}  </td>
+                            <td > {{ i.tger_gav}}  </td>
+                            <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                            <td><a class="btn btn-info" href="  ">Edit</a></td>
+                            <td><a class="btn btn-danger" href=" {% url 'supprimer_fund' i.id_fund %} ">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+       </section>
+
+
+
+
+     <section class="wrapper">
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> INVESTORS </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>id </th>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th >Number of investors </th>
+                      <th >Medium Ticket (€ M) </th>
+                      <th >Big Ticket (€ M)</th>
+                      <th >Small Ticket (€ M) </th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund }}</a></td>
+                            <td>{{ i.name_fund  }}</td>
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.nbre_invetisseurs }} </td>
+                            <td > {{ i.ticket_moyen}}</td>
+                            <td > {{ i.ticket_gros}}</td>
+                            <td > {{ i.ticket_petit}}</td>
+                             <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                            <td><a class="btn btn-info" href=" ">Edit</a></td>
+                             <td><a class="btn btn-danger" href="{% url 'supprimer_fund' i.id_fund %}">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+       </section>
+
+    <section class="wrapper">
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> LIQUIDITY </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>id </th>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th >Queue Value</th>
+                      <th >Queue term </th>
+                      <th >Redemption</th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund }}</a></td>
+                            <td>{{ i.name_fund  }}</td>
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.queue_value }} </td>
+                            <td > {{ i.queue_term}}</td>
+                            <td > {{ i.redemption}}</td>
+                            <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                            <td><a class="btn btn-info" href="  ">Edit</a></td>
+                             <td><a class="btn btn-danger" href="{% url 'supprimer_fund' i.id_fund %} ">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+       </section>
+
+
+    <section class="wrapper">
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> ESG </h4>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>id </th>
+                      <th>Fund Name</th>
+                      <th >Year</th>
+                      <th >Quarter</th>
+                      <th >SFDR</th>
+                      <th >GRESB </th>
+                      <th >Number of buildings labelled</th>
+                      <th >Name of the person updating</th>
+                      <th>Infos</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+
+                        {% for i in funds %}
+                            <tr>
+                            <td><a href="{% url 'profil_fund' i.id_fund %}">{{ i.id_fund }}</a></td>
+                            <td>{{ i.name_fund  }}</td>
+                            <td >{{ i.val_annee}}</td>
+                            <td >{{ i.id_trim }} </td>
+                            <td >{{ i.sfdr }} </td>
+                            <td > {{ i.gresb}}</td>
+                            <td > {{ i.nbre_immeuble_labelise}}</td>
+                            <td > {{ i.nom_per_modif}}</td>
+                             <td><a class="btn btn-success" href=" {% url  'profil_fund' i.id_fund %} ">Infos</a></td>
+                           <td><a class="btn btn-info" href=" ">Edit</a></td>
+                             <td><a class="btn btn-danger" href="{% url 'supprimer_fund' i.id_fund %} ">Delete</a></td>
+                            <!--td style="width: 300px;"><input type="button" value="Valider" onclick="valider({{forloop.counter}})"> <p id="{{forloop.counter}}" style="position: absolute; display: none; color: #fff; margin-left: 100px;margin-top: -25px; font-size: 12px; ">Le fond a été bien mis à jour</p></td-->
+                            </tr>
+
+
+                   {% endfor %}
+                  </tbody>
+                </table><br><br>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+       </section>
+
+
     </section>
    </body>
+
+
 
   <script>
     function valider(a) {

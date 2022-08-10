@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-{% load static %}
-
+{%load static%}
 <html lang="en">
-
-<head>
+ <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
@@ -12,7 +10,8 @@
   <title>Fund</title>
 
   <!-- Favicons -->
-  <link href="{%  static 'img/logo_hc.png' %}" rel="icon">
+    <link href="{%  static 'img/logo_hc.png' %}" rel="icon">
+    <link href="{%  static 'img/logo_hc.png' %}" rel="logo_hc">
 
 
   <!-- Bootstrap core CSS -->
@@ -26,12 +25,7 @@
   <link href="{%  static 'css/style-responsive.css'%}" rel="stylesheet">
   <script src="{%  static 'lib/chart-master/Chart.js'%}"></script>
 
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
+
 </head>
 
 <body>
@@ -45,10 +39,10 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="main.html" class="logo"><b>HAMBERG<span>CAPITAL</span></b></a>
+      <a href="{% url 'acceuil' %}" class="logo" style="color: #0131B4"><b>HAMBERG<span style="color: #0131B4">CAPITAL</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
-        <!--  notification start -->
+        <!--notification start -->
         <ul class="nav top-menu">
           <!-- settings start -->
           <li class="dropdown">
@@ -187,10 +181,10 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Extra Pages</span>
+              <span>Profil section</span>
               </a>
             <ul class="sub">
-              <li><a href="blank.html">Blank Page</a></li>
+              <li><a href="">Profil of Fund</a></li>
               <li><a href="login.html">Login</a></li>
               <li><a href="lock_screen.html">Lock Screen</a></li>
               <li><a href="profile.html">Profile</a></li>
@@ -203,10 +197,13 @@
               <span>Forms</span>
               </a>
             <ul class="sub">
-                <li><a href="{% url 'fund_form' %}">Viewing the fund update form  </a> </li>
-              <li><a href="{% url 'personnal_form' %}" }>Update fund history </a></li>
-              <li> <a href="{% url 'personnal_form' %}" }>Personnal Update fund </a></li>
-              <li><a href="/personnel/contactform.html">Contact Form</a></li>
+                <li><a href="{% url 'fund_form' %}"> FUND FORM  </a> </li>
+                <li><a href="{% url 'enregistrement_gp' %}">GP FORM </a> </li>
+                <li><a href="{% url 'enregistrement_geo' %}" }>ASSET TYPE AND GEOGRAPHICAL DISTRIBUTION OF FUND </a></li>
+                <li> <a href="{% url 'personnal_form' %}" }>PERSONNAL FORM</a></li>
+                <li> <a href="{% url 'enregistrement_fundgeo' %}" }>GEO DISTRIBUTION VALUE FORM</a></li>
+                <li> <a href="{% url 'enregistrement_fundassettype' %}" }>ASSET TYPE DISTRIBUTION VALUE FORM</a></li>
+                <li><a href="/personnel/contactform.html">Contact Form</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -216,7 +213,7 @@
               </a>
             <ul class="sub">
               <li><a href="{% url 'fund_table' %}">Fund table </a></li>
-              <li><a href="historical_fund_table">Historical fund table</a></li>
+              <li><a href="{% url 'historical_data' %}">Historical fund table</a></li>
             </ul>
           </li>
           <li>
@@ -282,9 +279,19 @@
   <!--script for this page-->
   <script src="{%  static 'lib/sparkline-chart.js'%}"></script>
   <script src="{%  static 'lib/zabuto_calendar.js'%}"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="application/javascript">
+      {% if messages %}
+          {% for message in messages %}
+             Swal.fire("Felicitation","{{ message }}", 'success')
+
+          {% endfor %}
+      {% endif %}
+
     $(document).ready(function() {
+
+        $('input, textarea, select').addClass('form-control')
+
       $("#date-popover").popover({
         html: true,
         trigger: "manual"
